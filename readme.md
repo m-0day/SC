@@ -40,15 +40,18 @@ We can see there are some strong negative correlations between contacts. That ma
 I am leaning towards getting rid of that and turning it into a bool. ˉ\_(ツ)_/ˉ
 
 ### Many NaN values
+```df_clean = df_clean.replace('unknown', np.NaN)```
+
 ```df_clean.isna().sum()```
+
 ```
 custAge           1804
-profession           0
-marital              0
+profession          61
+marital              8
 schooling         2386
 default           1432
-housing              0
-loan                 0
+housing            168
+loan               168
 contact              0
 month                0
 day_of_week        711
@@ -64,7 +67,6 @@ nr.employed          0
 pastEmail            0
 responded            0
 p_last_mon           0
-dtype: int64
 ```
 
 Unfortunately, I have a feeling that schooling is probably one of the strongest predictors of behavior, as "default" would be as it is a past behaviour so we can't just drop those NaN filled columns.
