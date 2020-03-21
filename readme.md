@@ -35,4 +35,42 @@ df['col_name'] = df['col_name'].astype('category')
 ## EDA
 Some of the model types listed above assume independence between independent variables. This is not always the case, so we should test for independence with a correlation matrix.
 ![Correlation Matrix](Corr_Matrix.png)
-We can see there are some strong negative correlations between contacts.
+We can see there are some strong negative correlations between contacts. That makes sense as they would have been contacted in some # of days if they have been contacted before, else that value is 999.
+
+I am leaning towards getting rid of that and turning it into a bool. ˉ\_(ツ)_/ˉ
+
+### Many NaN values
+```df_clean = df_clean.replace('unknown', np.NaN)```
+
+```df_clean.isna().sum()```
+
+```
+custAge           1804
+profession          61
+marital              8
+schooling         2386
+default           1432
+housing            168
+loan               168
+contact              0
+month                0
+day_of_week        711
+campaign             0
+pdays                0
+previous             0
+poutcome             0
+emp.var.rate         0
+cons.price.idx       0
+cons.conf.idx        0
+euribor3m            0
+nr.employed          0
+pastEmail            0
+responded            0
+p_last_mon           0
+```
+
+Unfortunately, I have a feeling that schooling is probably one of the strongest predictors of behavior, as "default" would be as it is a past behaviour so we can't just drop those NaN filled columns.
+However, I can probably impute the custAge field with the mean of the column like so `df_clean['custAge'].fillna(df_clean['custAge'].mean(), inplace = True)`
+
+
+
