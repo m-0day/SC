@@ -70,4 +70,7 @@ p_last_mon           0
 ```
 
 Unfortunately, I have a feeling that schooling is probably one of the strongest predictors of behavior, as "default" would be as it is a past behaviour so we can't just drop those NaN filled columns.
-However, I can probably impute the custAge field with the mean of the column
+However, I can probably impute the custAge field with the mean of the column like so `df_clean['custAge'].fillna(df_clean['custAge'].mean(), inplace = True)`
+
+
+
