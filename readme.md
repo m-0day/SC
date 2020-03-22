@@ -102,5 +102,6 @@ Where responded is the ind var.
 This is clearly an unbalanced data set
 ![Numeric Data Histograms](EDA_hist.png)
 
+We are looking for the biggest discriminating factors here, so `nr.employed euribor3m pdays` look like good candidates. Think "opposite distributions" 
 
 
