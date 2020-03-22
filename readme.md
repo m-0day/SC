@@ -100,7 +100,7 @@ Where responded is the ind var.
 ```
 
 This is clearly an unbalanced data set
-![Numeric Data Histograms](EDA_Hist.png)
+![Numeric Data Histograms](EDA_hist.png)
 
 
 
