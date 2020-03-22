@@ -26,6 +26,10 @@ df_clean['p_last_mon'] = df_clean.pdays < 30
 # dummies = pd.get_dummies(df['profession', 'marital', 'schooling', 'housing', 'loan', 'contact'])
 df_clean['custAge'].fillna(df_clean['custAge'].mean(), inplace = True)
 
+df_clean['schooling']=np.where((df_clean['schooling'] == 'basic.9y') | (df_clean['schooling'] == 'basic.6y') | (df_clean['schooling'] == 'basic.4y'), 'Basic', df_clean['schooling'])
+
+df_clean = df_clean.replace('unknown', np.NaN) # for some reason I still had some "unknown"
+
 #### Exploratory Data Analysis ####
 # To choose the right model we will want to have determined if things were independent, so we should plot the correlation matrix
 
@@ -43,6 +47,26 @@ cmap = sns.diverging_palette(220, 10, as_cmap=True)
 sns.heatmap(corr, mask=mask, cmap=cmap, vmax=.3, center=0,
             square=True, linewidths=.5, cbar_kws={"shrink": .5}).set_title('Correlation Matrix for Numeric Independent Vars')
 
-ax.title('Correlation Matrix for Numeric Independent Vars')
+ax.set_title('Correlation Matrix for Numeric Independent Vars')
+plt.show()
+
+fig, ((ax0, ax1, ax2, ax3), (ax4, ax5, ax6, ax7)) = plt.subplots(2, 4)
+fig.suptitle('Numeric Data Histograms for "Yes" and "No" Responses', fontsize=16)
+
+axes = [ax0, ax1, ax2, ax3, ax4, ax5, ax6]
+cols = ('custAge', 'pdays', 'cons.price.idx', 'cons.conf.idx', 'euribor3m', 'nr.employed', 'pastEmail')
+i = 0
+for col in cols:
+    x1 = df_clean[col][df_clean['responded'] == 'yes']
+    x2 = df_clean[col][df_clean['responded'] == 'no']
+    if i < 7:
+        axes[i].hist([x1, x2], bins=10, color = ['g', 'r'], alpha = 0.7, label = ['yes', 'no'])
+        # axes[i].hist(x2, bins=10, color = 'r')
+        # plt.gca().set(title='Frequency Histogram', ylabel='Frequency')
+        axes[i].set_title(col)
+    i = i + 1
+
+
+
 plt.show()
 
