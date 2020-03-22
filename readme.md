@@ -72,5 +72,14 @@ p_last_mon           0
 Unfortunately, I have a feeling that schooling is probably one of the strongest predictors of behavior, as "default" would be as it is a past behaviour so we can't just drop those NaN filled columns.
 However, I can probably impute the custAge field with the mean of the column like so `df_clean['custAge'].fillna(df_clean['custAge'].mean(), inplace = True)`
 
+Oh my goodness, this is why we do research on the topic. I was unsure as to what data types the sklearn logistic regression can handle. So while researching logistic regression data types I found the data set :)
+https://towardsdatascience.com/building-a-logistic-regression-in-python-step-by-step-becd4d56c9c8
+I promise I did not see it until this point.
+
+Looks like logistic regression it will be.
+
+Don't worry, I will follow up with a random forest and fine tune parameters and show confusion matrices.
+
+
 
 
