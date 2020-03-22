@@ -72,14 +72,35 @@ p_last_mon           0
 Unfortunately, I have a feeling that schooling is probably one of the strongest predictors of behavior, as "default" would be as it is a past behaviour so we can't just drop those NaN filled columns.
 However, I can probably impute the custAge field with the mean of the column like so `df_clean['custAge'].fillna(df_clean['custAge'].mean(), inplace = True)`
 
+### Why We Research
 Oh my goodness, this is why we do research on the topic. I was unsure as to what data types the sklearn logistic regression can handle. So while researching logistic regression data types I found the data set :)
 https://towardsdatascience.com/building-a-logistic-regression-in-python-step-by-step-becd4d56c9c8
 I promise I did not see it until this point.
 
 Looks like logistic regression it will be.
 
-Don't worry, I will follow up with a random forest and fine tune parameters and show confusion matrices.
+Don't worry, I will follow up with a random forest and fine tune parameters and show confusion matrices. Let's see if we can beat their F1 score. I'll bet yes.
 
+```
+columns are:
+['custAge', 'profession', 'marital', 'schooling', 'default', 'housing',
+       'loan', 'contact', 'month', 'day_of_week', 'campaign', 'pdays',
+       'previous', 'poutcome', 'emp.var.rate', 'cons.price.idx',
+       'cons.conf.idx', 'euribor3m', 'nr.employed', 'pastEmail', 'responded',
+       'p_last_mon']
+
+want bar charts for caterogical data and histogram for numeric data
+Numeric:
+custAge, pdays, cons.price.idx, cons.conf.idx, euribor3m, nr.employed, past_Email
+
+Categorical:
+profession, marital, schooling, default, housing, loan
+
+Where responded is the ind var.
+```
+
+This is clearly an unbalanced data set
+![Numeric Data Histograms](EDA_Hist.png)
 
 
 
