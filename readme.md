@@ -110,7 +110,13 @@ This is clearly an unbalanced data set
 
 We are looking for the biggest discriminating factors here, so `nr.employed euribor3m pdays` look like good candidates. Think "opposite distributions" 
 
-It will be a little more evident in the second bar chart. 
 ![First Categorical Bar Chart](EDA_bar.png)
+
+Let's look at the same data but now normalized over `yes` and `no` responses
+
+![Normalized Data Histograms](EDA_hist_normed.png)
+![Normalized Categorical Bar Chart](EDA_bar_normed.png)
+
+Some potentially stellar indicators here
 
 
