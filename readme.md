@@ -2,11 +2,17 @@
 
 ## Order of Operations, Generally
 [x] Clean Data
+
 [ ] Exploratory Data Analysis and Visualization
+
 [ ] Create and Train Model
+
 [ ] Test Model
+
 [ ] Optimize Parameters
+
 [ ] (Optional) Repeat for other model types and determine best model
+
 [ ] Visualize Results
 
 I conducted some EDA and looked at the types of data. They are mixed categories (strings) and numerics. The perceived output will be a Yes/No on likely customer. 
@@ -103,5 +109,8 @@ This is clearly an unbalanced data set
 ![Numeric Data Histograms](EDA_hist.png)
 
 We are looking for the biggest discriminating factors here, so `nr.employed euribor3m pdays` look like good candidates. Think "opposite distributions" 
+
+It will be a little more evident in the second bar chart. 
+![First Categorical Bar Chart](EDA_bar.png)
 
 
