@@ -74,21 +74,26 @@ cat_cols = ('profession', 'marital', 'schooling', 'default', 'housing', 'loan')
 
 i = 0
 for col in cat_cols:
-    total = df_clean[col].count()
     x1 =  df_clean[col][df_clean['responded'] == 'yes']
     x2 = df_clean[col][df_clean['responded'] == 'no']
+    if i == 2:
+        x2 = df_clean[col][(df_clean['responded'] == 'no') & (df_clean['schooling'] != 'illiterate')] #to avoid plotting issues, drop the one illeterate value (from the plot only)
     x1 = x1.groupby(x1.values).count()
+    if i == 3:
+        x1['yes'] = 0
+
     x2 = x2.groupby(x2.values).count()
     ind = np.arange(len(x1))
     width = 0.35
-    rects1 = axes[i].bar(ind, x1, width, color = 'g')
-    rects2 = axes[i].bar(ind+width, x2, width, color = 'r')
-    xTickMarks = [str(j) for j in x1.index.values]
-    xTickNames = axes[i].set_xticklabels(xTickMarks, rotation = 45)
-    # axes[i].hist(x2, bins=10, color = 'r')
-    # plt.gca().set(title='Frequency Histogram', ylabel='Frequency')
+    rects1 = axes[i].bar(ind, x1, width, color = 'g', alpha = 0.7)
+    rects2 = axes[i].bar(ind+width, x2, width, color = 'r', alpha = 0.7)
+    labels = [str(j) for j in x1.index.values]
+    axes[i].set_xticks(ind)
+
+    xTickNames = axes[i].set_xticklabels(labels, rotation = 45)
+    axes[i].xaxis.set_tick_params(labelsize=8)
     axes[i].set_title(col)
-    
+        
     i = i + 1
 
 
