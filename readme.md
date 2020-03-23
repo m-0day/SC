@@ -123,18 +123,18 @@ Some potentially stellar indicators here.
 I will create two models: a Logistic Regression and a Random Forest Classifier
 ### Imbalanced Data Set
 Due to the imbalanced nature of the data I will use the standard SMOTE algorithm (Synthetic Minority Oversampling Technique). 
-```At a high level, SMOTE:
-Works by creating synthetic samples from the minor class (no-subscription) instead of creating copies.
-Randomly choosing one of the k-nearest-neighbors and using it to create a similar, but randomly tweaked, new observations.```
+>At a high level, SMOTE:
+>Works by creating synthetic samples from the minor class (no-subscription) instead of creating copies.
+>Randomly choosing one of the k-nearest-neighbors and using it to create a similar, but randomly tweaked, new observations.
 
-```
-Optimization terminated successfully.
+
+```Optimization terminated successfully.
          Current function value: 0.429966
          Iterations 7
-print(predict.summary2())```
-                        ``` Results: Logit```
+print(predict.summary2())
+                        Results: Logit
 =================================================================
-```Model:              Logit            Pseudo R-squared: 0.380
+Model:              Logit            Pseudo R-squared: 0.380
 Dependent Variable: y                AIC:              11346.3908
 Date:               2020-03-23 13:47 BIC:              11496.0713
 No. Observations:   13148            Log-Likelihood:   -5653.2
@@ -165,7 +165,6 @@ x18      -1.2550     0.1173   -10.7009   0.0000   -1.4848   -1.0251
 x19      -0.5382     0.0733    -7.3414   0.0000   -0.6819   -0.3946
 x20      -0.5165     0.0806    -6.4073   0.0000   -0.6746   -0.3585
 =================================================================```
-```
 
 All p values look good. In fact they all look *too* good. Reviewing the data shows that only categorical data were deemed important and I don't believe that with how good some of the numeric data looked. So I am going to skip this step.
 
