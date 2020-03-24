@@ -9,11 +9,11 @@
 
 [x] Test Model
 
-~~[ ] Optimize Parameters
+~~[ ] Optimize Parameters~~
 
 [x] (Optional) Repeat for other model types and determine best model
 
-~~[ ] Visualize Results
+~~[ ] Visualize Results~~
 
 I conducted some EDA and looked at the types of data. They are mixed categories (strings) and numerics. The perceived output will be a Yes/No on likely customer. 
 This binary output leads me to the following model types.
@@ -205,7 +205,7 @@ Suprisingly good Confusion Matrix
 
     accuracy                           0.94      1002
    macro avg       0.94      0.94      0.94      1002
-weighted avg       0.94      0.94      0.94      1002```
+weighted avg       0.94      0.94      0.94      1002
 ```
 From here you really should do a cross-validation of the data to calculate your confidence interval as well as ensure you have not overfit the model. 
 But I'll just do a Random Forest instead.
@@ -218,9 +218,10 @@ Which also has a suprisingly good confusion matrix
 
     accuracy                           0.93      1336
    macro avg       0.93      0.93      0.93      1336
-weighted avg       0.93      0.93      0.93      1336```
+weighted avg       0.93      0.93      0.93      1336
 ```
 
 Now these are so good I want to go find the original data set and train and test against it.
-for reference, here is the original data set:
+for reference, here is the original data set: 
 http://archive.ics.uci.edu/ml/datasets/Bank+Marketing
+And no, unfortunately I did not train and test against it.
