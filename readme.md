@@ -247,6 +247,13 @@ So in order to make the same bins from `pd.cut()` I will need to VERY CAREFULLY 
 
 I put in copious testing before and after to make sure I did not keep the data mixed outside that one binning function, and I verified that the data was safe.
 
+Here are the revised and final predictive data labels. Remember, not all of these are positive predictors, some may predict strongly in the did not buy direction:
+```
+['emp.var.rate_(-0.52, -0.040000000000000036]', 'pdays_(16.0, 19.200000000000003]', 'pdays_(28.8, 32.0]', 'nr.employed_(5201.650000000001, 5228.1]', 'cons.price.idx_(92.45760000000001, 92.7142]', 'cons.price.idx_(92.97080000000001, 93.2274]', 'housing_no', 'housing_yes', 'loan_no', 'loan_yes', 'poutcome_failure', 'day_of_week_mon', 'day_of_week_thu', 'day_of_week_tue', 'day_of_week_wed', 'cons.conf.idx_(-50.823899999999995, -profession_housemaid', 'profession_management', 'profession_retired', 'profession_self-employed', 'profession_services', 'profession_student', 
+'custAge_(56.0, 63.599999999999994]', 'custAge_(78.8, 86.39999999999999]']
+```
+
+
 # Final Blind Prediction Made and CSV created.
 Enjoy.
 
