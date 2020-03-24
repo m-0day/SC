@@ -225,3 +225,29 @@ Now these are so good I want to go find the original data set and train and test
 for reference, here is the original data set: 
 http://archive.ics.uci.edu/ml/datasets/Bank+Marketing
 And no, unfortunately I did not train and test against it.
+
+### Predictive Labels
+Here are the refined most predictive labels:
+```['campaign_(0.961, 4.9]', 'nr.employed_(5201.65, 5228.1]', 'day_of_week_fri', 'day_of_week_mon', 'day_of_week_thu', 'day_of_week_tue', 'day_of_week_wed', 'cons.price.idx_(92.458, 92.714]', 'cons.price.idx_(92.971, 93.227]', 'pdays_(3.2, 6.4]', 'pdays_(16.0, 19.2]', 'month_may', 'housin'profession_student', 'profession_technician', 'profession_unemployed', 'schooling_Basic', 'schooling_high.school', 'schooling_professional.cou', 'custAge_(56.0, 63.6]', 'custAge_(63.6, 71.2]', 'custAge_(78.8, 86.4]']```
+
+#### Problems with blind test data
+I had to test to make sure there were all the same categorical columns, again because I was not trusting that the logistic regression or RFE was correctly handling numerical data since there was no numeric data in the first batch of RFE. 
+I ran a test and found the following problems:
+
+```Problem nr.employed_(5201.65, 5228.1]
+Problem cons.price.idx_(92.458, 92.714]
+Problem cons.price.idx_(92.971, 93.227]
+Problem pdays_(16.0, 19.2]
+Problem custAge_(56.0, 63.6]
+Problem custAge_(63.6, 71.2]
+Problem custAge_(78.8, 86.4]
+```
+These are the dummy categorical columns that were not in the blind test data.
+So in order to make the same bins from `pd.cut()` I will need to VERY CAREFULLY AND ONLY IN THIS ONE FUNCTION mix the train and test data to make the same bins for both sets. You should definitely not do this as a normal practice but it is ok if done correctly and carefully.
+
+I put in copious testing before and after to make sure I did not keep the data mixed outside that one binning function, and I verified that the data was safe.
+
+# Final Blind Prediction Made and CSV created.
+Enjoy.
+
+I am absolutely looking forward to working with you in the future! This was a great and very representative problem to work with as well.
