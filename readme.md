@@ -5,15 +5,15 @@
 
 [x] Exploratory Data Analysis and Visualization
 
-[ ] Create and Train Model
+[x] Create and Train Model
 
-[ ] Test Model
+[x] Test Model
 
-[ ] Optimize Parameters
+~~[ ] Optimize Parameters
 
-[ ] (Optional) Repeat for other model types and determine best model
+[x] (Optional) Repeat for other model types and determine best model
 
-[ ] Visualize Results
+~~[ ] Visualize Results
 
 I conducted some EDA and looked at the types of data. They are mixed categories (strings) and numerics. The perceived output will be a Yes/No on likely customer. 
 This binary output leads me to the following model types.
@@ -193,3 +193,34 @@ x50   -1.3763     0.7093   -1.9403  0.0523     -2.7664     0.0139
 ================================================================```
 ```
 get rid of high p values columns
+
+# Train, Fit, and Test the Model
+# Results
+Suprisingly good Confusion Matrix
+```
+              precision    recall  f1-score   support
+
+       False       0.92      0.97      0.94       514
+        True       0.96      0.91      0.94       488
+
+    accuracy                           0.94      1002
+   macro avg       0.94      0.94      0.94      1002
+weighted avg       0.94      0.94      0.94      1002```
+```
+From here you really should do a cross-validation of the data to calculate your confidence interval as well as ensure you have not overfit the model. 
+But I'll just do a Random Forest instead.
+
+Which also has a suprisingly good confusion matrix
+```              precision    recall  f1-score   support
+
+       False       0.94      0.92      0.93       693
+        True       0.92      0.93      0.93       643
+
+    accuracy                           0.93      1336
+   macro avg       0.93      0.93      0.93      1336
+weighted avg       0.93      0.93      0.93      1336```
+```
+
+Now these are so good I want to go find the original data set and train and test against it.
+for reference, here is the original data set:
+http://archive.ics.uci.edu/ml/datasets/Bank+Marketing
