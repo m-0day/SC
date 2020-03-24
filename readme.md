@@ -9,7 +9,7 @@
 
 [x] Test Model
 
-~~[ ] Optimize Parameters~~
+[x] Optimize Parameters
 
 [x] (Optional) Repeat for other model types and determine best model
 
