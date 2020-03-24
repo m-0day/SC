@@ -53,6 +53,9 @@ print(predict.summary2())
 l_col_names = list(col_names)
 del l_col_names[1], l_col_names[11], l_col_names[41], l_col_names[39]
 
+#print l_col_names to terminal, the lazy way
+l_col_names
+
 os_data_X = os_data_X[l_col_names]
 
 OS_X = os_data_X.values
@@ -76,3 +79,23 @@ rand_forest = RandomForestClassifier(bootstrap = True)
 rand_forest.fit(X_train.values, y_train.values.ravel())
 y_pred = rand_forest.predict(X_test)
 print(metrics.classification_report(y_test, y_pred))
+
+#finally import the blind test data, clean and make prediction
+#in theory I SHOULD be able to just import and filter by column names and then make predictions based on the remaining cols
+#update: of course that did not work at first. 
+dft = pd.read_csv('dft_dum.csv')
+
+# predictor_list = col_names.values
+i = 0
+for pred in l_col_names:
+    if pred not in dft.columns:
+        print('Problem', pred)
+        i = i+1
+if (i == 0):
+    print('No Problem')
+    
+
+Blind_X_test = dft[l_col_names]
+Blind_y_pred = rand_forest.predict(Blind_X_test)
+
+np.savetxt("Blind Prediction.csv", Blind_y_pred, delimiter=",", fmt='%s')
