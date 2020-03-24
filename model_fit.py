@@ -1,5 +1,5 @@
 import pandas as pd 
-from sklearn.ensemble import RandomForestClassifier as RFC 
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_selection import RFE
 from sklearn.linear_model import LogisticRegression
 from imblearn.over_sampling import SMOTE
@@ -7,6 +7,7 @@ import numpy as np
 import statsmodels.api as sm
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
+from sklearn import metrics
 
 df = pd.read_csv('df_dum.csv')
 df = df.drop(columns = ['Unnamed: 0'], axis = 1)
@@ -20,6 +21,8 @@ os = SMOTE(random_state=0)
 
 # We don't need to do train_test_split here because the data is already split into training and test sets.
 # speaking of which, I am afraid we will have to clean the test set as well.
+
+#Update we will have to clean the test data AND we will have to do a train test split on the training data because this is a blind test/prediction
 
 os_data_X, os_data_y = os.fit_sample(X_train, y_train)
 print("Ratio of SMOTE oversampled data YES to NO respondents:", len(os_data_X)/len(os_data_y))
@@ -46,4 +49,30 @@ logit_model = sm.Logit(OS_y, OS_X)
 predict = logit_model.fit()
 print(predict.summary2())
 
-#now import data and bin the numeric test data accordingly
+# drop the large p-values of x2 and x12 (first index = 1)
+l_col_names = list(col_names)
+del l_col_names[1], l_col_names[11], l_col_names[41], l_col_names[39]
+
+os_data_X = os_data_X[l_col_names]
+
+OS_X = os_data_X.values
+
+#### Fit the model and test it using .predict method
+X_train, X_test, y_train, y_test = train_test_split(os_data_X, os_data_y, test_size=0.3, random_state=0)
+logreg = LogisticRegression(max_iter=5000)
+logreg.fit(X_train, y_train)
+
+y_pred = logreg.predict(X_test)
+logreg.score(X_test, y_test)
+
+confusion_matrix = confusion_matrix(y_test, y_pred)
+print(confusion_matrix)
+cf = metrics.classification_report(y_test, y_pred)
+print(cf)
+
+#### Fit the model and test it using .predict method
+X_train, X_test, y_train, y_test = train_test_split(os_data_X, os_data_y, test_size=0.4, random_state=0)
+rand_forest = RandomForestClassifier(bootstrap = True)
+rand_forest.fit(X_train.values, y_train.values.ravel())
+y_pred = rand_forest.predict(X_test)
+print(metrics.classification_report(y_test, y_pred))
