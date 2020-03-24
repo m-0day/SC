@@ -165,7 +165,7 @@ x18      -1.2550     0.1173   -10.7009   0.0000   -1.4848   -1.0251
 x19      -0.5382     0.0733    -7.3414   0.0000   -0.6819   -0.3946
 x20      -0.5165     0.0806    -6.4073   0.0000   -0.6746   -0.3585
 =================================================================```
-
+```
 All p values look good. In fact they all look *too* good. Reviewing the data shows that only categorical data were deemed important and I don't believe that with how good some of the numeric data looked. So I am going to skip this step.
 
 *Update* I tried skipping that step and got a singular matrix when solving for my logistic regression so I went back and categorized the numeric data and *that* worked.
