@@ -51,7 +51,7 @@ Some of the model types listed above assume independence between independent var
 ![Correlation Matrix](Corr_Matrix.png)
 We can see there are some strong negative correlations between contacts. That makes sense as they would have been contacted in some # of days if they have been contacted before, else that value is 999.
 
-I am leaning towards getting rid of that and turning it into a bool. ˉ\_(ツ)_/ˉ
+I am leaning towards getting rid of that and turning it into a bool.
 
 ### Many NaN values
 ```df_clean = df_clean.replace('unknown', np.NaN)```
