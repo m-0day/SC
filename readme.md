@@ -2,6 +2,12 @@
 ## Examination of Public Dataset hosted by UC Irvine
 Data is from a marketing agency's results following a marketing campaign to gain customers for a Phillipino bank
 
+## Bottom Line Upfront
+The data was cleaned, explored and classifier models were applied.
+Logistic Regression Classifier was nearly as effective as Random Forest Classifier.
+F1 score of 0.94 achieved on train and test sets indicates the model is not over or under-fit.
+Hyperparameter tuning was not done due to time limits, but a Stochastic Gradient Descent would be my first choice.
+
 ## Order of Operations, Generally
 [x] Clean Data
 
