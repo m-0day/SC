@@ -1,4 +1,6 @@
 # Classification Model to Determine a Likely Customer
+## Examination of Public Dataset hosted by UC Irvine
+Data is from a marketing agency's results following a marketing campaign to gain customers for a Phillipino bank
 
 ## Order of Operations, Generally
 [x] Clean Data
